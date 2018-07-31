@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 映射文件，习惯性命名XXXmapper.xml，在映射文件中配置XML语句 -->
+<!-- 这里的id就叫做statement id，非常重要，sqlSession的参数要用到的 -->
+<!-- 这里的resultType别看他很简单， 其实意思是说，你给我查询， 返回的结果是第一个PO类 -->
+<!-- 这条查询比较特殊， 不用另外拼接变量， 因为是查询所有，所以他也没有输入参数类型的声明  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tk.mybatis.simple.mapper.UserMapper">
+	<resultMap id = "userMap" type="tk.mybatis.simple.model.SysUser">
+		<id property="id" column="id"/>
+		<result property="userName" column="user_name"/>
+		<result property="userPassword" column="user_password"/>
+		<result property="userEmail" column="user_email"/>
+		<result property="userInfo" column="user_info"/>
+		<result property="headImg" column="head_img" jdbcType="BLOB"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		</resultMap>
+		<select id ="selectById" resultMap="userMap">
+		select * from sys_user where id = #{id}
+		</select>
+		
+		
+		
+		
+		
+		<select id ="selectAll" resultType="tk.mybatis.simple.model.SysUser">
+		 select id,
+		 user_name userName,
+		 user_password userPassword,
+		 user_email userEmail,
+		 user_info userInfo,
+		 head_img headImg,
+		 create_time createTime
+		 from sys_user
+		</select>
+		
+		
+		
+		<select id="selectRolesByUserId" resultType="tk.mybatis.simple.model.SysRole">
+			select
+				r.id, 
+				r.role_name roleName, 
+				r.enabled,
+				r.create_by createBy,
+				r.create_time createTime,
+				u.user_name as "user.userName",
+				u.user_email as "user.userEmail",
+				u.user_name as "user.userName",
+				u.user_email as "user.userEmail"
+			from sys_user u
+			inner join sys_user_role ur on u.id = ur.user_id
+			inner join sys_role r on ur.role_id = r.id
+			where u.id = #{userId}
+		
+		</select>
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+</mapper> 
+

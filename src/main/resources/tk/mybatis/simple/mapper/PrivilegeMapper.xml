@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 映射文件，习惯性命名XXXmapper.xml，在映射文件中配置XML语句 -->
+<!-- 这里的id就叫做statement id，非常重要，sqlSession的参数要用到的 -->
+<!-- 这里的resultType别看他很简单， 其实意思是说，你给我查询， 返回的结果是第一个PO类 -->
+<!-- 这条查询比较特殊， 不用另外拼接变量， 因为是查询所有，所以他也没有输入参数类型的声明  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tk.mybatis.simple.mapper.PrivilegeMapper">
+
+</mapper> 
+

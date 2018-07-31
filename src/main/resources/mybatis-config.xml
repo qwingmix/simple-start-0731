@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 这份全局配置文件，名称不固定，主要是用来连接数据块的配置，IP，账号密码等等 -->
+
+<!-- 还有一个关键的作用，就是在这里注明了所有的mapper -->
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    
+    
+    <!-- 这里也是很重要，配置的别名，这样后面的mapper.xml就不用写完整路径了 -->
+     <typeAliases>
+        <package name="tk.mybatis.simple.model"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis_crmdjt"/>
+                <property name="username" value="root"/>
+                <property name="password" value="566520"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!-- 这里下面就是一行行的mapper -->
+    <mappers>
+        <package name="tk.mybatis.simple.mapper"/>
+    </mappers>
+</configuration>
+
+
